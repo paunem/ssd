@@ -15,13 +15,6 @@ annotations = []
 locations = []
 
 
-def in_annotations(imgid):
-    for ann in annotations:
-        if ann['imgid'] == imgid:
-            return True
-    return False
-
-
 with open(annotation_file) as f:
     next(f)
     print('Creating annotations...', end=' ')
@@ -29,8 +22,7 @@ with open(annotation_file) as f:
     for line in lines:
         img_id = line[0]
         class_label = line[2]
-        # one bbox per image (this will make the model worse but less complicated)
-        if class_label in class_labels:  # and not in_annotations(img_id):
+        if class_label in class_labels:
             class_label = class_labels[class_label]
             path_to_file = base_path + class_label.lower() + '/' + img_id + '.jpg'
             if os.path.isfile(path_to_file):
