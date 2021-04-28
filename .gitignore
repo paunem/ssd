@@ -1,2 +1,9 @@
 # Project exclude paths
 /venv/
+/trained_models/
+/tensorboard/
+/backup/
+/predictions/
+/src/data/
+/src/oiddata/
+/src/__init__.py
